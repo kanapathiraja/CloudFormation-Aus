@@ -567,8 +567,8 @@ Parameters:
     Description: Type the required Windows AMI-ID
     Type: "AWS::EC2::Image::Id"
     Default: ami-0e5d82cae7458738b     # default AMI for mumbai region is mentioned
-  ubuntuAMI:
-    Description: Type the required Windows AMI-ID
+  UbuntuAMI:
+    Description: Type the required ubuntu AMI-ID
     Type: "AWS::EC2::Image::Id"
     Default: ami-0c1a7f89451184c8b      # default AMI for mumbai region is mentioned
 
@@ -601,6 +601,7 @@ Resources:
     Type: 'AWS::EC2::Subnet'
     Properties:
       VpcId: !Ref PUBLICVPC
+      AvailabilityZone : ap-south-1a
       CidrBlock: 10.1.0.0/24
       Tags:
         - Key: Name
@@ -711,6 +712,7 @@ Resources:
     Properties:
       CidrBlock: 10.2.0.0/16
       VpcId: !Ref EC2VPCYMA4
+      AvailabilityZone : ap-south-1a
       Tags:
         - Key: Name
           Value: Private-Subnet01-dev
@@ -812,9 +814,7 @@ Resources:
       GroupDescription: Private-Server-SG
       GroupName: Private-Server-SG
       SecurityGroupIngress:
-        - IpProtocol: tcp
-          FromPort: 3389
-          ToPort: 3389
+        - IpProtocol: '-1'
           CidrIp: 10.1.0.0/16
       SecurityGroupEgress:
         - IpProtocol: '-1'
