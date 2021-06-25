@@ -827,7 +827,7 @@ Resources:
   EC2PRIVATEUBUNTU:
     Type: 'AWS::EC2::Instance'
     Properties:
-      ImageId: !Ref WindowsAMI
+      ImageId: !Ref UbuntuAMI
       InstanceType: !Ref InstanceType
       KeyName: !Ref myKeyPair
       NetworkInterfaces:
